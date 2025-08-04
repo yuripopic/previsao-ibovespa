@@ -8,36 +8,22 @@ decisão dos analistas quantitativos da empresa.
 
 ## 📦 Bibliotecas Utilizadas no Modelo
 
-Este projeto utiliza as seguintes bibliotecas Python:
 
-- **`numpy`**  
-  Utilizada para manipulação eficiente de arrays e operações matemáticas vetorizadas.
-
-- **`pandas`**  
-  Usada para carregar, tratar e organizar os dados históricos do Ibovespa em estruturas tabulares (DataFrames).
-
-- **`sklearn.preprocessing.MinMaxScaler`**  
-  Responsável por normalizar os dados numéricos para a faixa de 0 a 1, facilitando o treinamento do modelo LSTM.
-
-- **`sklearn.metrics`**  
-  Conjunto de métricas usadas para avaliar a performance do modelo, como:
-  - MAE (Erro Absoluto Médio)
-  - MAPE (Erro Percentual Absoluto Médio)
-  - RMSE (Raiz do Erro Quadrático Médio)
-
-- **`keras.models.Sequential` & `keras.layers` (LSTM, Dense)**  
-  Utilizadas para construir e treinar a rede neural LSTM.
-
-- **`plotly.graph_objects`**  
-  Usado para visualização interativa de gráficos.
-
-- **`pathlib.Path`**  
-  Permite manipular caminhos de arquivos de forma mais segura e multiplataforma.
-
-- **`datetime.timedelta`**  
-  Usado para trabalhar com operações de datas, como calcular o próximo dia após o valor mais recente da base.
-
-- **`os`**  
-  Auxilia na obtenção e manipulação de caminhos de diretórios locais.
+| Biblioteca | Descrição |
+|------------|-----------|
+| **[yfinance](https://github.com/ranaroussi/yfinance)** | Biblioteca para baixar dados históricos do mercado financeiro diretamente do Yahoo Finance. Usada para obter os dados diários do IBOVESPA (`^BVSP`). |
+| **[pandas](https://pandas.pydata.org/)** | Manipulação de dados em formato de tabelas (DataFrame). Usada para tratar os dados, calcular indicadores técnicos e preparar o conjunto de dados. |
+| **[numpy](https://numpy.org/)** | Suporte a operações numéricas e vetoriais, utilizada para cálculos matemáticos e criação de colunas como variações percentuais. |
+| **[xgboost](https://xgboost.readthedocs.io/)** | Framework de Gradient Boosting de alto desempenho, utilizado para treinar o modelo preditivo (`XGBClassifier`). |
+| **[scikit-learn](https://scikit-learn.org/)** | Utilizada para pré-processamento (escalonamento com `StandardScaler`), avaliação do modelo (`accuracy_score`, `confusion_matrix`, `classification_report`) e divisão dos dados (`TimeSeriesSplit`). |
+| **[matplotlib](https://matplotlib.org/)** | Biblioteca de visualização para criar gráficos e comparar previsões com os dados reais. |
+| **[seaborn](https://seaborn.pydata.org/)** | Extensão do matplotlib que facilita visualizações estatísticas, como mapas de calor para matrizes de confusão. |
 
 
+## ⚙️ Funcionalidades do código
+
+- Download automático de dados do IBOVESPA com `yfinance`
+- Criação de features com indicadores técnicos (RSI, MACD, Bandas de Bollinger, OBV, etc.)
+- Modelagem com `XGBoost` para classificação binária (Alta ou Baixa)
+- Avaliação da acurácia e relatório de desempenho
+- Visualização gráfica dos resultados
